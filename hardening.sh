@@ -32,4 +32,10 @@
     echo $username:$docker_user_password | sudo chpasswd
     sudo usermod -aG docker $username
     sudo usermod -aG sudo $username
-	su - $username
+	# Check if the user was created
+	if id "$username" &>/dev/null; then
+		su - $username
+		echo -e "\e[32mAccount Created, you are now in the home directory of $username\e[0m"
+	else
+		echo -e "\e[31mError: Failed to create user account $username\e[0m"
+	fi
