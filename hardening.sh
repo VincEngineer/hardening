@@ -21,6 +21,16 @@ if [[ $docker_account_choice =~ ^[Yy]$ ]]; then
             docker_user_password+="$char"
         fi
     done
+	# Install Docker
+	curl -fsSL https://get.docker.com -o get-docker.sh
+	sudo sh get-docker.sh || { echo -e "\e[31mError installing Docker. Exiting.\e[0m"; exit 1; }
+
+
+
+	# Install Docker Compose
+	sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+	sudo chmod +x /usr/local/bin/docker-compose
+
     echo
     sudo useradd -m -s /bin/bash $username
     echo $username:$docker_user_password | sudo chpasswd
