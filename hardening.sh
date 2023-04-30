@@ -32,4 +32,4 @@
     echo $username:$docker_user_password | sudo chpasswd
     sudo usermod -aG docker $username
     sudo usermod -aG sudo $username
-	#su - $username
+	su - $username
