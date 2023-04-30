@@ -37,4 +37,5 @@ if [[ $docker_account_choice =~ ^[Yy]$ ]]; then
     sudo usermod -aG docker $username
     sudo usermod -aG sudo $username
 	su - $username
+	whoami
 fi
